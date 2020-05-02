@@ -9,6 +9,7 @@ const typeDefs = gql`
   }
 
   type Expense {
+    id: ID!
     name: String!
     description: String
     amount: Int!
@@ -34,7 +35,7 @@ const typeDefs = gql`
 
   type Query {
     expense(id: ID!): Expense
-    expences(first: Int, after: ID, last: Int, before: ID): Expenses
+    expenses(first: Int, after: ID, last: Int, before: ID): Expenses
   }
 
   input CreateExpenseInput {
