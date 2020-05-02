@@ -1,23 +1,15 @@
-type Expense = {
-  node: {
-    id: string;
-    name: string;
-    description: string;
-    amount: number;
-    category: any;
-  };
-};
-type ExpensesProps = {
-  expenses?: Expense[];
-};
-
-export const Expenses = ({ expenses }: ExpensesProps) => {
-  console.log(expenses);
-  if (!expenses) return null;
+import { useExpensesQuery } from "../generated/graphql";
+export const Expenses = () => {
+  const { data, error } = useExpensesQuery({
+    variables: {
+      first: 20,
+    },
+  });
+  if (!data) return null;
   return (
     <ul>
-      {expenses.map((expense) => (
-        <li key={expense.node.id}>{expense.node.amount}</li>
+      {data.expenses?.edges?.map((expense) => (
+        <li key={expense?.node.id}>{expense?.node.amount}</li>
       ))}
     </ul>
   );

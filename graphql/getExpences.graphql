@@ -1,0 +1,19 @@
+query expenses($first: Int, $after: ID, $last: Int, $before: ID) {
+  expenses(first: $first, after: $after, last: $last, before: $before) {
+    edges {
+      node {
+        id
+        name
+        description
+        category
+        amount
+      }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      endCursor
+      startCursor
+    }
+  }
+}
