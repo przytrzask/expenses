@@ -151,7 +151,7 @@ function createApolloClient(
   const link = createPersistedQueryLink().concat(
     new HttpLink({
       // @todo move to enviroment var
-      uri: "http://localhost:3000/api/graphql", // Server URL (must be absolute)
+      uri: "./api/graphql", // Server URL (must be absolute)
       credentials: "include", // Additional fetch() options like `credentials` or `headers`
       headers,
       fetch,
