@@ -1,42 +1,9 @@
 import Head from "next/head";
-import { useRef, useEffect } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import { withApollo } from "../lib/Apollo";
 import { Expenses } from "../components/Expenses";
 
-const queryExpenses = gql`
-  query expenses($first: Int, $after: ID, $last: Int, $before: ID) {
-    expenses(first: $first, after: $after, last: $last, before: $before) {
-      edges {
-        node {
-          id
-          name
-          description
-          category
-          amount
-        }
-      }
-      pageInfo {
-        hasNextPage
-        hasPreviousPage
-        endCursor
-        startCursor
-      }
-    }
-  }
-`;
-
 const Home = () => {
-  const { data, error } = useQuery(queryExpenses, {
-    variables: {
-      first: 20,
-    },
-  });
-
-  console.log(data);
-
   return (
     <div className="container">
       <Head>
@@ -46,7 +13,7 @@ const Home = () => {
 
       <main>
         <h1 className="title">Welcome to Expenses</h1>
-        <Expenses expenses={data?.expenses?.edges} />
+        <Expenses />
       </main>
 
       <style jsx>{`
