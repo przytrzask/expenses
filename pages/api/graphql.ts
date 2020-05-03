@@ -29,7 +29,7 @@ const typeDefs = gql`
   }
 
   type Expenses {
-    edges: [ExpenseEdge]
+    edges: [ExpenseEdge!]!
     pageInfo: PageInfo!
   }
 
