@@ -1,3 +1,9 @@
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react";
+import tw from "@tailwindcssinjs/macro";
+
+import Button from "./Button";
+
 import { useExpensesQuery } from "../generated/graphql";
 export const Expenses = () => {
   const { data, error } = useExpensesQuery({
@@ -7,10 +13,18 @@ export const Expenses = () => {
   });
   if (!data) return null;
   return (
-    <ul>
-      {data.expenses?.edges?.map((expense) => (
-        <li key={expense?.node.id}>{expense?.node.amount}</li>
-      ))}
-    </ul>
+    <>
+      <Button css={listStyle}>style test</Button>
+      <ul>
+        {data.expenses?.edges?.map((expense) => (
+          <li key={expense?.node.id}>{expense?.node.amount}</li>
+        ))}
+      </ul>
+    </>
   );
 };
+
+const listStyle = tw`
+list-none
+
+`;

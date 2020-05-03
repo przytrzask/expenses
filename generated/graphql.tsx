@@ -44,14 +44,14 @@ export type PageInfo = {
 
 export type Expenses = {
    __typename?: 'Expenses';
-  edges?: Maybe<Array<Maybe<ExpenseEdge>>>;
+  edges: Array<ExpenseEdge>;
   pageInfo: PageInfo;
 };
 
 export type Query = {
    __typename?: 'Query';
   expense?: Maybe<Expense>;
-  expenses?: Maybe<Expenses>;
+  expenses: Expenses;
 };
 
 
@@ -123,19 +123,19 @@ export type ExpensesQueryVariables = {
 
 export type ExpensesQuery = (
   { __typename?: 'Query' }
-  & { expenses?: Maybe<(
+  & { expenses: (
     { __typename?: 'Expenses' }
-    & { edges?: Maybe<Array<Maybe<(
+    & { edges: Array<(
       { __typename?: 'ExpenseEdge' }
       & { node: (
         { __typename?: 'Expense' }
         & Pick<Expense, 'id' | 'name' | 'description' | 'category' | 'amount'>
       ) }
-    )>>>, pageInfo: (
+    )>, pageInfo: (
       { __typename?: 'PageInfo' }
       & Pick<PageInfo, 'hasNextPage' | 'hasPreviousPage' | 'endCursor' | 'startCursor'>
     ) }
-  )> }
+  ) }
 );
 
 
