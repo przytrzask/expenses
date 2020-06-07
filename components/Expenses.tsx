@@ -2,9 +2,11 @@
 import { css, jsx } from "@emotion/react";
 import tw from "@tailwindcssinjs/macro";
 
-import Button from "./Button";
-
+import { Layout, leftPane, rightPane } from "./Layout";
+import Link, { LinkProps } from "next/link";
+import { button } from "../styles/button";
 import { useExpensesQuery } from "../generated/graphql";
+
 export const Expenses = () => {
   const { data, error } = useExpensesQuery({
     variables: {
@@ -13,14 +15,19 @@ export const Expenses = () => {
   });
   if (!data) return null;
   return (
-    <>
-      <Button css={listStyle}>style test</Button>
-      <ul>
-        {data.expenses?.edges?.map((expense) => (
-          <li key={expense?.node.id}>{expense?.node.amount}</li>
-        ))}
-      </ul>
-    </>
+    <Layout>
+      <div css={leftPane} />
+
+      <div css={rightPane}>
+        <ul>
+          {data.expenses.edges.map((expense) => (
+            <li css={listStyle} key={expense.node.id}>
+              {expense.node.amount}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Layout>
   );
 };
 
