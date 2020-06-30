@@ -6,11 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate": "graphql-codegen --config codegen.yml"
+    "generate": "graphql-codegen --config codegen.yml",
+    "build:base-css": "tailwindcss build ./styles/tailwind.base.css -o ./styles/base.css"
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.5",
     "@apollo/react-ssr": "^3.1.5",
+    "@emotion/css": "^11.0.0-next.12",
+    "@emotion/react": "^11.0.0-next.12",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
     "apollo-link": "^1.2.14",
@@ -19,6 +22,7 @@
     "apollo-link-persisted-queries": "^0.2.2",
     "apollo-server": "^2.11.0",
     "apollo-server-micro": "^2.11.0",
+    "framer-motion": "^1.11.0",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
@@ -27,6 +31,9 @@
     "react-dom": "16.13.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@emotion/babel-plugin": "^11.0.0-next.12",
+    "@emotion/server": "^11.0.0-next.12",
     "@graphql-codegen/cli": "1.13.4",
     "@graphql-codegen/fragment-matcher": "1.13.4",
     "@graphql-codegen/introspection": "1.13.4",
@@ -34,10 +41,14 @@
     "@graphql-codegen/typescript-graphql-files-modules": "^1.13.4",
     "@graphql-codegen/typescript-operations": "1.13.4",
     "@graphql-codegen/typescript-react-apollo": "1.13.4",
+    "@tailwindcss/ui": "^0.2.2",
+    "@tailwindcssinjs/macro": "^0.3.1",
     "@types/node": "^13.9.1",
     "@types/react": "^16.9.23",
+    "babel-plugin-macros": "^2.8.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
+    "tailwindcss": "^1.4.4",
     "typescript": "^3.8.3"
   },
   "husky": {

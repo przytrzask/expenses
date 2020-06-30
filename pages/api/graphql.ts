@@ -29,13 +29,13 @@ const typeDefs = gql`
   }
 
   type Expenses {
-    edges: [ExpenseEdge]
+    edges: [ExpenseEdge!]!
     pageInfo: PageInfo!
   }
 
   type Query {
     expense(id: ID!): Expense
-    expenses(first: Int, after: ID, last: Int, before: ID): Expenses
+    expenses(first: Int, after: ID, last: Int, before: ID): Expenses!
   }
 
   input CreateExpenseInput {
@@ -91,6 +91,7 @@ const server = new ApolloServer({
   typeDefs,
   mocks,
   mockEntireSchema: false,
+  // @ts-ignore @todo fixme
   resolvers,
 });
 
