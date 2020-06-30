@@ -2,11 +2,11 @@
 import { css, jsx } from "@emotion/react";
 import tw from "@tailwindcssinjs/macro";
 
-import { Navbar } from "./Navbar";
+import { Tabs } from "./navigation/nav";
 
 export const Layout: React.FC = ({ children, ...props }) => (
   <main css={[layoutStyles]}>
-    <Navbar />
+    <Tabs />
     {children}
   </main>
 );

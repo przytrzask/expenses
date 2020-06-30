@@ -1,53 +1,113 @@
+/** @jsx jsx */
 import * as React from "react";
+import { css, jsx } from "@emotion/react";
+import tw from "@tailwindcssinjs/macro";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 import { motion, useMotionValue } from "framer-motion";
-// import { Icon } from "./Icons";
+import { Icon } from "./Icons";
 
-// Learn more: https://framer.com/api
-
-const icons = ["home", "list", "comments"];
+const routes = ["/", "/expenses", "/comments"];
+const iconByRoute = {
+  "/": "home",
+  "/expenses": "list",
+  "/comments": "comments",
+};
 
 // @ts-ignore
-export function Tabs(props) {
+const Tabsy = (props) => {
   const { text, tint, onTap, width, height, iconFill, ...rest } = props;
-  const tabWidth = React.useMemo(() => (width - 20) / 3, []);
+  const tabWidth = React.useMemo(() => width / 3, []);
 
-  const [active, setActive] = React.useState(0);
+  const { pathname } = useRouter();
 
-  //   const x = useMotionValue(active);
+  const activeIndex = routes.indexOf(pathname);
 
   return (
-    <motion.div
-      {...rest}
-      height={height}
-      width={width}
-      background="#fff"
-      onTap={onTap}
-      borderRadius={16}
-      shadow={`0px 4px 5px 2px rgba(181, 200, 212, 0.17)`}
+    <motion.nav
+      css={nav}
+      style={{
+        height,
+        width,
+      }}
     >
-      <motion.div style={{ width: width - 20, height: "90%" }}>
-        <motion.div
-          animate={{ left: tabWidth * active }}
-          style={{ height: "80%", width: "33%" }}
+      <motion.ul css={[frame, ul]}>
+        <motion.li
+          css={tab}
+          animate={{ x: tabWidth * activeIndex }}
+          style={{ width: "33%", background: "#F3F5FA" }}
         />
-        {icons.map((el, index) => (
-          <motion.div
-            style={{
-              x: index * tabWidth,
-              height: "80%",
-              width: "20%",
-            }}
+        {routes.map((el, index) => (
+          <motion.li
+            css={[
+              css`
+                opacity: 0.9;
+                position: absolute;
+                height: 100%;
+                width: 33%;
+                left: ${index * tabWidth}px;
+              `,
+              li,
+            ]}
             key={index}
-            onTap={() => setActive(index)}
-          ></motion.div>
+          >
+            <Link href={el}>
+              <a>
+                {/* @ts-ignore */}
+                <Icon type={iconByRoute[el]} />
+              </a>
+            </Link>
+          </motion.li>
         ))}
-      </motion.div>
-    </motion.div>
+      </motion.ul>
+    </motion.nav>
   );
-}
-
-Tabs.defaultProps = {
-  height: 85,
-  width: 400,
-  tint: "#fff",
 };
+
+export const Tabs = React.memo(Tabsy);
+
+Tabsy.defaultProps = {
+  height: 50,
+  width: 250,
+  tint: "#ddd",
+};
+
+const ul = tw`
+list-none
+m-0
+p-0
+`;
+
+const li = tw`
+flex
+justify-center
+list-none
+items-center`;
+const tab = css`
+  position: absolute;
+  opacity: 1;
+  height: 100%;
+  border-radius: 0.6rem;
+`;
+
+const frame = css`
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+const nav = tw`
+h-10
+fixed
+shadow-lg
+bottom-0
+rounded-lg
+z-10
+mb-6
+ml-12
+p-3
+bg-white 
+
+`;

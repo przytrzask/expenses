@@ -1,11 +1,16 @@
 import React from "react";
 import App from "next/app";
 import "../pages/normalize.css";
+import { Layout } from "../components/Layout";
 
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-    return <Component {...pageProps}></Component>;
+    return (
+      <Layout>
+        <Component {...pageProps}></Component>
+      </Layout>
+    );
   }
 }
 

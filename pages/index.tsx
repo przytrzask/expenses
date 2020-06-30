@@ -1,7 +1,9 @@
 import Head from "next/head";
+import React from "react";
 
 import { withApollo } from "../lib/Apollo";
 import { Expenses } from "../components/Expenses";
+import { Layout, leftPane, rightPane } from "../components/Layout";
 
 const Home = () => {
   return (
@@ -13,8 +15,7 @@ const Home = () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Expenses />
+      index
     </div>
   );
 };

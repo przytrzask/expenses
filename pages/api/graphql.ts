@@ -91,6 +91,7 @@ const server = new ApolloServer({
   typeDefs,
   mocks,
   mockEntireSchema: false,
+  // @ts-ignore @todo fixme
   resolvers,
 });
 
