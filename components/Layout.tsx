@@ -13,7 +13,6 @@ export const Layout: React.FC = ({ children, ...props }) => (
 
 const layoutStyles = tw`
 box-border
-p-5 
 min-h-screen
 bg-gray-100
 flex flex-row`;

@@ -2,22 +2,18 @@ import Head from "next/head";
 import React from "react";
 
 import { withApollo } from "../lib/Apollo";
-import { Expenses } from "../components/Expenses";
-import { Layout, leftPane, rightPane } from "../components/Layout";
+import { Home } from "../components/Home/Home";
 
-const Home = () => {
+const Index = () => {
   return (
-    <div className="container">
-      <style jsx>{`
-        min-height: 100vh;
-      `}</style>
+    <React.Fragment>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      index
-    </div>
+      <Home />
+    </React.Fragment>
   );
 };
 
-export default withApollo(Home);
+export default withApollo(Index);
