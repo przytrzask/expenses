@@ -32,18 +32,9 @@ export function Home() {
                   var(${colorKeys[0]})
                 )
               `,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
             }}
-            css={css`
-              transition: ${colorKeys[0]} ${transitionDelay}ms linear,
-                ${colorKeys[1]} ${transitionDelay}ms linear,
-                ${colorKeys[2]} ${transitionDelay}ms linear;
-              background: radial-gradient(
-                circle at top left,
-                var(${colorKeys[2]}),
-                var(${colorKeys[1]}),
-                var(${colorKeys[0]})
-              );
-            `}
           >
             expences
           </span>
