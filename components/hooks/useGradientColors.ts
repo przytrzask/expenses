@@ -35,7 +35,7 @@ const getColorPropName = (id: string, index: number) =>
 const useRainbow = ({ intervalDelay = 2000 }) => {
   const prefersReducedMotion =
     typeof window === "undefined"
-      ? true
+      ? false
       : window.matchMedia("(prefers-reduced-motion: no-preference)");
 
   //   @ts-ignore

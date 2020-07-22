@@ -9,13 +9,13 @@ export function Home() {
   const colors = useRainbow({ intervalDelay: transitionDelay * 1.2 });
   const colorKeys = Object.keys(colors);
 
-  console.log(colorKeys);
-
   return (
     <div css={heroWrapper}>
       <div css={titleStyles}>
         <h1>
-          Have control over your{" "}
+          Have control
+          <br /> over your
+          <br />
           <span
             style={{
               ...colors,
@@ -53,12 +53,6 @@ const heroWrapper = css`
   background-position: center center;
   background-size: cover;
   color: white;
-  h1 {
-    font-size: 5rem;
-
-    span {
-    }
-  }
 `;
 
 const titleStyles = css`
