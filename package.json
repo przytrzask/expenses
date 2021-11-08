@@ -20,7 +20,7 @@
     "apollo-link-error": "^1.1.13",
     "apollo-link-http": "^1.5.17",
     "apollo-link-persisted-queries": "^0.2.2",
-    "apollo-server": "^2.11.0",
+    "apollo-server": "^2.25.3",
     "apollo-server-micro": "^2.11.0",
     "framer-motion": "^1.11.0",
     "graphql": "^15.0.0",
